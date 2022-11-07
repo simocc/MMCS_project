@@ -1,0 +1,292 @@
+{
+    "ace": {
+        "search": {
+            "@backwards": "false",
+            "@highlightmatches": "true",
+            "@matchcase": "false",
+            "@preservecase": "false",
+            "@regex": "false",
+            "@wholeword": "false",
+            "@wraparound": "true"
+        }
+    },
+    "console": {
+        "@expanded": true,
+        "@height": "300",
+        "@maximized": "false",
+        "json()": {
+            "meta": {
+                "accessList": [
+                    "tab4"
+                ]
+            },
+            "name": "pane2",
+            "nodes": [
+                {
+                    "type": "tab",
+                    "name": "tab4",
+                    "path": "",
+                    "className": [
+                        "tab4",
+                        "running"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1667574508230
+                        },
+                        "filter": true,
+                        "title": "very_first_try.mos - Running",
+                        "tooltip": "very_first_try.mos - Running",
+                        "output": {
+                            "id": "output251820",
+                            "width": 792,
+                            "height": 274,
+                            "config": {
+                                "runner": "Mosel",
+                                "command": "very_first_try.mos",
+                                "debug": true,
+                                "toolbar": true
+                            },
+                            "running": {
+                                "pid": 4596,
+                                "name": "output251820",
+                                "running": 2,
+                                "runner": [
+                                    {
+                                        "caption": "Mosel",
+                                        "cmd": [
+                                            "C:\\xpressmp\\workbench\\.c9\\node.exe",
+                                            "C:\\xpressmp\\workbench\\.c9\\node_modules\\mosel-runner\\bin\\mosel-runner",
+                                            "run",
+                                            "${debug?--debug=6167}",
+                                            "--basedir",
+                                            "$project_path",
+                                            "$file",
+                                            "--stack-trace=20",
+                                            "$args"
+                                        ],
+                                        "cmdCleanup": [
+                                            "true"
+                                        ],
+                                        "debugger": "mosel",
+                                        "debugport": 6167,
+                                        "selector": "\\.(mos|py)$",
+                                        "$builtin": true
+                                    }
+                                ],
+                                "debug": true
+                            }
+                        }
+                    },
+                    "editorType": "output",
+                    "active": true
+                }
+            ],
+            "skin": "editor_tab",
+            "skinset": "default",
+            "type": "pane"
+        }
+    },
+    "ext": {
+        "counters": {
+            "@ace": 2,
+            "@acestatus": 2,
+            "@base-step-wizard": 2,
+            "@divider": 5,
+            "@document": 5,
+            "@editorswitch": 2,
+            "@fico.vdl.attributes-panel": 1,
+            "@fico.vdl.palette-panel": 1,
+            "@form": 4,
+            "@menu": 6,
+            "@menuitem": 15,
+            "@pane": 3,
+            "@session": 5,
+            "@tab": 5,
+            "@undoManager": 5,
+            "@welcome": 1
+        }
+    },
+    "findinfiles": {
+        "@console": "true",
+        "@matchcase": "false",
+        "@regex": "false",
+        "@scope": "selection",
+        "@wholeword": "false"
+    },
+    "local": {
+        "window": {
+            "@fullscreen": false,
+            "@maximized": false,
+            "@minimized": true,
+            "@position": "154:55",
+            "@size": "1200:668"
+        }
+    },
+    "menus": {
+        "@minimized": "false"
+    },
+    "nak": {
+        "@installed": true
+    },
+    "od": {
+        "@last-run-config": "path:very_first_try.mos"
+    },
+    "panecycle": {
+        "json()": [
+            "tab1",
+            "tab4"
+        ]
+    },
+    "panels": {
+        "@active-left": "tree",
+        "@active-right": "debugger",
+        "@width-left": 220,
+        "@width-right": 302,
+        "commands.panel": {
+            "@enabled": "false",
+            "@name": "commands.panel"
+        },
+        "debugger": {
+            "@enabled": "true",
+            "@name": "debugger"
+        },
+        "fico.ide.language.mosel.modules-panel": {
+            "@enabled": "true",
+            "@name": "fico.ide.language.mosel.modules-panel"
+        },
+        "fico.om.sidebar": {
+            "@enabled": "true",
+            "@name": "fico.om.sidebar"
+        },
+        "fico.vdl.attributes-panel0": {
+            "@enabled": "false",
+            "@name": "fico.vdl.attributes-panel0"
+        },
+        "fico.vdl.palette-panel0": {
+            "@enabled": "false",
+            "@name": "fico.vdl.palette-panel0"
+        },
+        "mosel.profiler": {
+            "@enabled": "true",
+            "@name": "mosel.profiler"
+        },
+        "navigate": {
+            "@enabled": "false",
+            "@name": "navigate"
+        },
+        "outline": {
+            "@enabled": "true",
+            "@name": "outline"
+        },
+        "tree": {
+            "@enabled": "true",
+            "@name": "tree"
+        }
+    },
+    "projecttree": {
+        "expanded": {
+            "json()": [
+                "/"
+            ]
+        }
+    },
+    "recentfiles": {
+        "json()": [
+            {
+                "type": "tab",
+                "name": "tab3",
+                "path": "/data_1.dat",
+                "className": [
+                    "tab3",
+                    "focus"
+                ],
+                "document": {
+                    "changed": false,
+                    "meta": {
+                        "timestamp": 1667574276008
+                    },
+                    "filter": true,
+                    "title": "data_1.dat",
+                    "tooltip": "/data_1.dat",
+                    "ace": {}
+                },
+                "editorType": "ace",
+                "active": true
+            },
+            {
+                "type": "tab",
+                "name": "tab2",
+                "path": "/model_eldos.mos",
+                "className": [
+                    "tab2"
+                ],
+                "document": {
+                    "changed": false,
+                    "meta": {
+                        "timestamp": 1667523056635
+                    },
+                    "filter": true,
+                    "title": "model_eldos.mos",
+                    "tooltip": "/model_eldos.mos",
+                    "ace": {}
+                },
+                "editorType": "ace",
+                "active": false
+            }
+        ]
+    },
+    "search-history": {
+        "replace": {
+            "json()": [
+                "."
+            ]
+        }
+    },
+    "tabs": {
+        "json()": {
+            "focus": "/very_first_try.mos",
+            "meta": {
+                "accessList": [
+                    "tab1"
+                ]
+            },
+            "name": "pane1",
+            "nodes": [
+                {
+                    "type": "tab",
+                    "name": "tab1",
+                    "path": "/very_first_try.mos",
+                    "className": [
+                        "tab1",
+                        "focus"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1667574505027
+                        },
+                        "filter": true,
+                        "title": "very_first_try.mos",
+                        "tooltip": "/very_first_try.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": true
+                }
+            ],
+            "skin": "editor_tab",
+            "skinset": "default",
+            "type": "pane"
+        }
+    },
+    "tree_selection": {
+        "json()": [
+            "/data_1.dat"
+        ]
+    },
+    "welcome": {
+        "@first": true
+    }
+}

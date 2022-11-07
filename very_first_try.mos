@@ -1,0 +1,70 @@
+model charge_charge_charge
+uses "mmxprs"
+
+
+!##DECLARE###########################################################################################
+declarations
+  !Indices
+	number_of_demand_points = 434
+	demand_points = 1..number_of_demand_points !== i
+
+	number_of_charging_points = 434
+	charging_points = 1..number_of_charging_points !== j
+
+	!Param
+	demand: array(demand_points) of real
+	distance: array(demand_points) of real
+
+	!Vars
+	x: array(demand_points,charging_points) of mpvar
+end-declarations
+
+!Forward display procedure
+!forward procedure DisplaySolution
+
+
+!##INITIALIZE#########################################################################################
+initialisations from "data_1.dat"
+  demand distance
+end-initialisations
+
+
+!##OBJECTIVE FUNCTION##################################################################################
+!total_profit:= sum(p in products, y in years, l in land_plots) produce(p,y,l)*sell_price_m2(p)
+total_distance:= sum(i in demand_points, j in charging_points) x(i,j) * distance(i)
+
+
+
+
+!##CONSTRAINTS#########################################################################################
+
+!----------------------------
+forall (i in demand_points) do
+  sum(j in charging_points) x(i,j) >= demand(i)
+end-do
+
+
+
+
+
+!##SOLVE#########################################################################################
+maximise(total_distance)
+!Display solution if OK
+if(getprobstat = XPRS_OPT) then
+ writeln("Problem solved succefully")
+elif(getprobstat = XPRS_INF) then
+ writeln("Problem is infeasible")
+end-if
+
+
+
+!##DISPLAY RESULTS PROCEDURE#########################################################################################
+
+
+
+writeln("Total cost: ", getobjval,".")
+
+
+
+
+end-model
