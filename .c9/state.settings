@@ -12,7 +12,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": "300",
+        "@height": 151,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -40,12 +40,13 @@
                         "output": {
                             "id": "output251820",
                             "width": 1094,
-                            "height": 274,
+                            "height": 125,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
                                 "debug": false,
-                                "toolbar": true
+                                "toolbar": true,
+                                "name": ""
                             }
                         }
                     },
@@ -194,7 +195,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668174363032
+                            "timestamp": 1668174857727
                         },
                         "filter": true,
                         "title": "very_first_try.mos",

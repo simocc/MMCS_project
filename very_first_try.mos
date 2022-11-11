@@ -16,9 +16,11 @@ declarations
 	distance: array(demand_points,demand_points) of real
 
 	!Vars
-	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i.
-	x: array(demand_points,charging_points) of mpvar
-
+	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
+	x_e: array(demand_points,demand_points) of mpvar
+	
+	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
+	x_h: array(demand_points,demand_points) of mpvar
 
 
 end-declarations
@@ -35,12 +37,17 @@ end-initialisations
 
 !##OBJECTIVE FUNCTION##################################################################################
 !total_profit:= sum(p in products, y in years, l in land_plots) produce(p,y,l)*sell_price_m2(p)
-total_distance:= sum(i in demand_points, j in charging_points) x(i,j) * distance(i)
+total_distance:= sum(i in demand_points, j in charging_points) x(i,j) * distance(i,j)
 
 
 
 
 !##CONSTRAINTS#########################################################################################
+forall (d in demand_points) do
+	forall (j in charging_points) do
+		x(d,j) is_integer
+	end-do
+end-do
 
 !----------------------------
 forall (i in demand_points) do
