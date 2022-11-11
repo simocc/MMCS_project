@@ -27,8 +27,7 @@
                     "name": "tab4",
                     "path": "",
                     "className": [
-                        "tab4",
-                        "running"
+                        "tab4"
                     ],
                     "document": {
                         "changed": false,
@@ -36,46 +35,17 @@
                             "timestamp": 1667574508230
                         },
                         "filter": true,
-                        "title": "very_first_try.mos - Running",
-                        "tooltip": "very_first_try.mos - Running",
+                        "title": "very_first_try.mos - Stopped",
+                        "tooltip": "very_first_try.mos - Stopped",
                         "output": {
                             "id": "output251820",
-                            "width": 792,
+                            "width": 1094,
                             "height": 274,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
-                                "debug": true,
+                                "debug": false,
                                 "toolbar": true
-                            },
-                            "running": {
-                                "pid": 4596,
-                                "name": "output251820",
-                                "running": 2,
-                                "runner": [
-                                    {
-                                        "caption": "Mosel",
-                                        "cmd": [
-                                            "C:\\xpressmp\\workbench\\.c9\\node.exe",
-                                            "C:\\xpressmp\\workbench\\.c9\\node_modules\\mosel-runner\\bin\\mosel-runner",
-                                            "run",
-                                            "${debug?--debug=6167}",
-                                            "--basedir",
-                                            "$project_path",
-                                            "$file",
-                                            "--stack-trace=20",
-                                            "$args"
-                                        ],
-                                        "cmdCleanup": [
-                                            "true"
-                                        ],
-                                        "debugger": "mosel",
-                                        "debugport": 6167,
-                                        "selector": "\\.(mos|py)$",
-                                        "$builtin": true
-                                    }
-                                ],
-                                "debug": true
                             }
                         }
                     },
@@ -90,21 +60,21 @@
     },
     "ext": {
         "counters": {
-            "@ace": 2,
-            "@acestatus": 2,
+            "@ace": 1,
+            "@acestatus": 1,
             "@base-step-wizard": 2,
             "@divider": 5,
-            "@document": 5,
-            "@editorswitch": 2,
+            "@document": 3,
+            "@editorswitch": 1,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
             "@form": 4,
             "@menu": 6,
             "@menuitem": 15,
             "@pane": 3,
-            "@session": 5,
-            "@tab": 5,
-            "@undoManager": 5,
+            "@session": 3,
+            "@tab": 1,
+            "@undoManager": 3,
             "@welcome": 1
         }
     },
@@ -135,13 +105,13 @@
     },
     "panecycle": {
         "json()": [
-            "tab1",
+            "tab0",
             "tab4"
         ]
     },
     "panels": {
         "@active-left": "tree",
-        "@active-right": "debugger",
+        "@active-right": "none",
         "@width-left": 220,
         "@width-right": 302,
         "commands.panel": {
@@ -193,49 +163,7 @@
         }
     },
     "recentfiles": {
-        "json()": [
-            {
-                "type": "tab",
-                "name": "tab3",
-                "path": "/data_1.dat",
-                "className": [
-                    "tab3",
-                    "focus"
-                ],
-                "document": {
-                    "changed": false,
-                    "meta": {
-                        "timestamp": 1667574276008
-                    },
-                    "filter": true,
-                    "title": "data_1.dat",
-                    "tooltip": "/data_1.dat",
-                    "ace": {}
-                },
-                "editorType": "ace",
-                "active": true
-            },
-            {
-                "type": "tab",
-                "name": "tab2",
-                "path": "/model_eldos.mos",
-                "className": [
-                    "tab2"
-                ],
-                "document": {
-                    "changed": false,
-                    "meta": {
-                        "timestamp": 1667523056635
-                    },
-                    "filter": true,
-                    "title": "model_eldos.mos",
-                    "tooltip": "/model_eldos.mos",
-                    "ace": {}
-                },
-                "editorType": "ace",
-                "active": false
-            }
-        ]
+        "json()": []
     },
     "search-history": {
         "replace": {
@@ -246,9 +174,10 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/very_first_try.mos",
+            "focus": "/data_1.dat",
             "meta": {
                 "accessList": [
+                    "tab0",
                     "tab1"
                 ]
             },
@@ -259,17 +188,37 @@
                     "name": "tab1",
                     "path": "/very_first_try.mos",
                     "className": [
-                        "tab1",
+                        "tab1"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1668173447711
+                        },
+                        "filter": true,
+                        "title": "very_first_try.mos",
+                        "tooltip": "/very_first_try.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab0",
+                    "path": "/data_1.dat",
+                    "className": [
+                        "tab0",
                         "focus"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1667574505027
+                            "timestamp": 1668173772407
                         },
                         "filter": true,
-                        "title": "very_first_try.mos",
-                        "tooltip": "/very_first_try.mos",
+                        "title": "data_1.dat",
+                        "tooltip": "/data_1.dat",
                         "ace": {}
                     },
                     "editorType": "ace",
