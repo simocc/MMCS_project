@@ -105,7 +105,7 @@
     },
     "panecycle": {
         "json()": [
-            "tab0",
+            "tab1",
             "tab4"
         ]
     },
@@ -174,11 +174,11 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/data_1.dat",
+            "focus": "/very_first_try.mos",
             "meta": {
                 "accessList": [
-                    "tab0",
-                    "tab1"
+                    "tab1",
+                    "tab0"
                 ]
             },
             "name": "pane1",
@@ -188,7 +188,8 @@
                     "name": "tab1",
                     "path": "/very_first_try.mos",
                     "className": [
-                        "tab1"
+                        "tab1",
+                        "focus"
                     ],
                     "document": {
                         "changed": false,
@@ -201,20 +202,19 @@
                         "ace": {}
                     },
                     "editorType": "ace",
-                    "active": false
+                    "active": true
                 },
                 {
                     "type": "tab",
                     "name": "tab0",
                     "path": "/data_1.dat",
                     "className": [
-                        "tab0",
-                        "focus"
+                        "tab0"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668174284345
+                            "timestamp": 1668174373295
                         },
                         "filter": true,
                         "title": "data_1.dat",
@@ -222,7 +222,7 @@
                         "ace": {}
                     },
                     "editorType": "ace",
-                    "active": true
+                    "active": false
                 }
             ],
             "skin": "editor_tab",

@@ -16,10 +16,11 @@ declarations
 	distance: array(demand_points,demand_points) of real
 
 	!Vars
+	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i.
 	x: array(demand_points,charging_points) of mpvar
-	
 
-	
+
+
 end-declarations
 
 !Forward display procedure
