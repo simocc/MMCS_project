@@ -1,0 +1,1 @@
+{"filter":false,"title":"Inspect: demand","tooltip":"Inspect: demand","undoManager":{"mark":-1,"position":-1,"stack":[]},"moselarray":{"varInfo":{"expr":"demand","type":{"name":"array","element":{"name":"real"},"indexes":[{"name":"demand_points","type":{"name":"set","element":{"name":"integer"}}}]}}},"timestamp":1668176755135,"hash":"da39a3ee5e6b4b0d3255bfef95601890afd80709"}

@@ -11,17 +11,24 @@ declarations
 	number_of_charging_points = 434
 	charging_points = 1..number_of_charging_points !== j
 
+	types_of_chargers = 3
+	types = 1..types_of_chargers
+
 	!Param
 	demand: array(demand_points) of real
 	distance: array(demand_points,demand_points) of real
+	Number_of_Existing_Charging_Points: array(charging_points, types) of real
+	Number_of_Potential_Locations:array(charging_points) of real
 
 	!Vars
 	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
-	x_e: array(demand_points,demand_points) of mpvar
-	
-	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
-	x_h: array(demand_points,demand_points) of mpvar
+	x_e: array(demand_points,charging_points) of mpvar
 
+	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
+	x_h: array(demand_points,charging_points) of mpvar
+
+	! The number of charging stations in grid j, including existing stations
+	y : array(charging_points) of mpvar
 
 end-declarations
 
@@ -31,27 +38,34 @@ end-declarations
 
 !##INITIALIZE#########################################################################################
 initialisations from "data_1.dat"
-  demand distance
+  demand distance Number_of_Potential_Locations Number_of_Existing_Charging_Points
 end-initialisations
 
 
 !##OBJECTIVE FUNCTION##################################################################################
 !total_profit:= sum(p in products, y in years, l in land_plots) produce(p,y,l)*sell_price_m2(p)
-total_distance:= sum(i in demand_points, j in charging_points) x(i,j) * distance(i,j)
+total_distance:= sum(i in demand_points, j in charging_points) x_e(i,j) * distance(i,j)
 
 
 
 
 !##CONSTRAINTS#########################################################################################
+! satisfy demand
 forall (d in demand_points) do
 	forall (j in charging_points) do
-		x(d,j) is_integer
+		x_e(d,j) is_integer
 	end-do
+end-do
+
+! satisfy potential charging points
+forall (j in charging_points) do
+	y(j) >=  sum(t in types) Number_of_Existing_Charging_Points(j,t)
+	y(j) <= Number_of_Potential_Locations(j) + sum(t in types) Number_of_Existing_Charging_Points(j,t)
 end-do
 
 !----------------------------
 forall (i in demand_points) do
-  sum(j in charging_points) x(i,j) >= demand(i)
+  sum(j in charging_points) x_e(i,j) >= demand(i)
 end-do
 
 
@@ -59,16 +73,23 @@ end-do
 
 
 !##SOLVE#########################################################################################
-maximise(total_distance)
+minimise(total_distance)
 !Display solution if OK
 if(getprobstat = XPRS_OPT) then
  writeln("Problem solved succefully")
+ elif(getprobstat = XPRS_UBND) then
+ writeln("Problem is unbounded")
 elif(getprobstat = XPRS_INF) then
  writeln("Problem is infeasible")
 end-if
 
-
-
+forall(i in charging_points)do
+	forall (j in demand_points) do
+	if getsol(x_e(i,j)) > 0 then
+	writeln(getsol(x_e(i,j)))
+	end-if
+	end-do
+end-do
 !##DISPLAY RESULTS PROCEDURE#########################################################################################
 
 

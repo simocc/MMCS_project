@@ -12,7 +12,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 151,
+        "@height": 331.6000061035156,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -39,14 +39,13 @@
                         "tooltip": "very_first_try.mos - Stopped",
                         "output": {
                             "id": "output251820",
-                            "width": 1094,
-                            "height": 125,
+                            "width": 962,
+                            "height": 300,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
                                 "debug": false,
-                                "toolbar": true,
-                                "name": ""
+                                "toolbar": true
                             }
                         }
                     },
@@ -65,17 +64,18 @@
             "@acestatus": 1,
             "@base-step-wizard": 2,
             "@divider": 5,
-            "@document": 3,
+            "@document": 5,
             "@editorswitch": 1,
+            "@fico.mosel.debugger.array.model": 2,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
             "@form": 4,
             "@menu": 6,
             "@menuitem": 15,
             "@pane": 3,
-            "@session": 3,
-            "@tab": 1,
-            "@undoManager": 3,
+            "@session": 5,
+            "@tab": 4,
+            "@undoManager": 5,
             "@welcome": 1
         }
     },
@@ -89,10 +89,10 @@
     "local": {
         "window": {
             "@fullscreen": false,
-            "@maximized": false,
-            "@minimized": true,
-            "@position": "154:55",
-            "@size": "1200:668"
+            "@maximized": true,
+            "@minimized": false,
+            "@position": "152:52",
+            "@size": "1182:634"
         }
     },
     "menus": {
@@ -112,7 +112,7 @@
     },
     "panels": {
         "@active-left": "tree",
-        "@active-right": "none",
+        "@active-right": "debugger",
         "@width-left": 220,
         "@width-right": 302,
         "commands.panel": {
@@ -179,7 +179,9 @@
             "meta": {
                 "accessList": [
                     "tab1",
-                    "tab0"
+                    "tab0",
+                    "tab3",
+                    "tab2"
                 ]
             },
             "name": "pane1",
@@ -195,7 +197,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668174857727
+                            "timestamp": 1668178895929
                         },
                         "filter": true,
                         "title": "very_first_try.mos",
@@ -215,7 +217,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668174373295
+                            "timestamp": 1668178458929
                         },
                         "filter": true,
                         "title": "data_1.dat",
@@ -223,6 +225,129 @@
                         "ace": {}
                     },
                     "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab2",
+                    "path": "",
+                    "className": [
+                        "tab2"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1668176533900
+                        },
+                        "filter": true,
+                        "title": "Inspect: x_e",
+                        "tooltip": "Inspect: x_e",
+                        "moselarray": {
+                            "varInfo": {
+                                "expr": "x_e",
+                                "type": {
+                                    "name": "array",
+                                    "element": {
+                                        "name": "mpvar",
+                                        "attributes": [
+                                            {
+                                                "name": "lb",
+                                                "type": {
+                                                    "name": "real"
+                                                }
+                                            },
+                                            {
+                                                "name": "name",
+                                                "type": {
+                                                    "name": "string"
+                                                }
+                                            },
+                                            {
+                                                "name": "rcost",
+                                                "type": {
+                                                    "name": "real"
+                                                }
+                                            },
+                                            {
+                                                "name": "sol",
+                                                "type": {
+                                                    "name": "real"
+                                                }
+                                            },
+                                            {
+                                                "name": "ub",
+                                                "type": {
+                                                    "name": "real"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "indexes": [
+                                        {
+                                            "name": "demand_points",
+                                            "type": {
+                                                "name": "set",
+                                                "element": {
+                                                    "name": "integer"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "name": "charging_points",
+                                            "type": {
+                                                "name": "set",
+                                                "element": {
+                                                    "name": "integer"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "editorType": "moselarray",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab3",
+                    "path": "",
+                    "className": [
+                        "tab3"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1668176755135
+                        },
+                        "filter": true,
+                        "title": "Inspect: demand",
+                        "tooltip": "Inspect: demand",
+                        "moselarray": {
+                            "varInfo": {
+                                "expr": "demand",
+                                "type": {
+                                    "name": "array",
+                                    "element": {
+                                        "name": "real"
+                                    },
+                                    "indexes": [
+                                        {
+                                            "name": "demand_points",
+                                            "type": {
+                                                "name": "set",
+                                                "element": {
+                                                    "name": "integer"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "editorType": "moselarray",
                     "active": false
                 }
             ],
