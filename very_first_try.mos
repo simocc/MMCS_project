@@ -13,10 +13,13 @@ declarations
 
 	!Param
 	demand: array(demand_points) of real
-	distance: array(demand_points) of real
+	distance: array(demand_points,demand_points) of real
 
 	!Vars
 	x: array(demand_points,charging_points) of mpvar
+	
+
+	
 end-declarations
 
 !Forward display procedure
