@@ -12,7 +12,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 331.6000061035156,
+        "@height": 253,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -27,7 +27,8 @@
                     "name": "tab4",
                     "path": "",
                     "className": [
-                        "tab4"
+                        "tab4",
+                        "connecting"
                     ],
                     "document": {
                         "changed": false,
@@ -35,12 +36,12 @@
                             "timestamp": 1667574508230
                         },
                         "filter": true,
-                        "title": "very_first_try.mos - Stopped",
-                        "tooltip": "very_first_try.mos - Stopped",
+                        "title": "very_first_try.mos - Idle",
+                        "tooltip": "very_first_try.mos - Idle",
                         "output": {
                             "id": "output251820",
-                            "width": 962,
-                            "height": 300,
+                            "width": 1648,
+                            "height": 221,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
@@ -73,7 +74,7 @@
             "@menu": 6,
             "@menuitem": 15,
             "@pane": 3,
-            "@session": 5,
+            "@session": 3,
             "@tab": 4,
             "@undoManager": 5,
             "@welcome": 1
@@ -112,7 +113,7 @@
     },
     "panels": {
         "@active-left": "tree",
-        "@active-right": "debugger",
+        "@active-right": "none",
         "@width-left": 220,
         "@width-right": 302,
         "commands.panel": {
@@ -180,8 +181,8 @@
                 "accessList": [
                     "tab1",
                     "tab0",
-                    "tab3",
-                    "tab2"
+                    "tab2",
+                    "tab3"
                 ]
             },
             "name": "pane1",
@@ -197,7 +198,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668178895929
+                            "timestamp": 1668359649521
                         },
                         "filter": true,
                         "title": "very_first_try.mos",
@@ -217,7 +218,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668178458929
+                            "timestamp": 1668359624189
                         },
                         "filter": true,
                         "title": "data_1.dat",
@@ -235,10 +236,6 @@
                         "tab2"
                     ],
                     "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1668176533900
-                        },
                         "filter": true,
                         "title": "Inspect: x_e",
                         "tooltip": "Inspect: x_e",
@@ -304,7 +301,12 @@
                                     ]
                                 }
                             }
-                        }
+                        },
+                        "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "meta": {
+                            "timestamp": 1668176533900
+                        },
+                        "changed": false
                     },
                     "editorType": "moselarray",
                     "active": false
@@ -317,10 +319,6 @@
                         "tab3"
                     ],
                     "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1668176755135
-                        },
                         "filter": true,
                         "title": "Inspect: demand",
                         "tooltip": "Inspect: demand",
@@ -345,7 +343,12 @@
                                     ]
                                 }
                             }
-                        }
+                        },
+                        "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "meta": {
+                            "timestamp": 1668176755135
+                        },
+                        "changed": false
                     },
                     "editorType": "moselarray",
                     "active": false

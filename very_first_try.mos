@@ -15,20 +15,21 @@ declarations
 	types = 1..types_of_chargers
 
 	!Param
-	demand: array(demand_points) of real
+	demand_e_0, demand_h_0: array(demand_points) of real
 	distance: array(demand_points,demand_points) of real
 	Number_of_Existing_Charging_Points: array(charging_points, types) of real
 	Number_of_Potential_Locations:array(charging_points) of real
+	lower_bound, upper_bound: array(types) of real
 
 	!Vars
-	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
-	x_e: array(demand_points,charging_points) of mpvar
+	! x_e(ij)= Number of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
+	x_e: array(demand_points,charging_points,types) of mpvar
 
-	! x(ij)= NUmber of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
-	x_h: array(demand_points,charging_points) of mpvar
+	! x_h(ij)= Number of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for hybrid
+	x_h: array(demand_points,charging_points,types) of mpvar
 
 	! The number of charging stations in grid j, including existing stations
-	y : array(charging_points) of mpvar
+	y : array(charging_points, types) of mpvar
 
 end-declarations
 
@@ -38,65 +39,90 @@ end-declarations
 
 !##INITIALIZE#########################################################################################
 initialisations from "data_1.dat"
-  demand distance Number_of_Potential_Locations Number_of_Existing_Charging_Points
+  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points 
+  lower_bound upper_bound
 end-initialisations
 
 
 !##OBJECTIVE FUNCTION##################################################################################
-!total_profit:= sum(p in products, y in years, l in land_plots) produce(p,y,l)*sell_price_m2(p)
-total_distance:= sum(i in demand_points, j in charging_points) x_e(i,j) * distance(i,j)
+total_distance:= sum(i in demand_points, j in charging_points,t in types) (x_e(i,j,t) +  x_h(i,j,t)) * distance(i,j)
 
 
 
 
 !##CONSTRAINTS#########################################################################################
 ! satisfy demand
-forall (d in demand_points) do
-	forall (j in charging_points) do
-		x_e(d,j) is_integer
+forall (j in charging_points) do
+	forall (i in demand_points) do 
+		forall (t in types) do 
+			x_e(i,j,t) is_integer
+			x_h(i,j,t) is_integer
+			y(j,t) is_integer
+		end-do
 	end-do
 end-do
 
 ! satisfy potential charging points
 forall (j in charging_points) do
-	y(j) >=  sum(t in types) Number_of_Existing_Charging_Points(j,t)
-	y(j) <= Number_of_Potential_Locations(j) + sum(t in types) Number_of_Existing_Charging_Points(j,t)
+	sum(t in types) y(j,t) >=  sum(t in types) Number_of_Existing_Charging_Points(j,t)
+	sum(t in types) y(j,t) <= Number_of_Potential_Locations(j) + sum(t in types) Number_of_Existing_Charging_Points(j,t)
 end-do
 
-!----------------------------
+! satisfy demand for each grid, multiply demand by a factor to satisfy less customers
+k := 1
 forall (i in demand_points) do
-  sum(j in charging_points) x_e(i,j) >= demand(i)
+  sum(j in charging_points,t in types) x_e(i,j,t) >= k * demand_e_0(i)
+  sum(j in charging_points,t in types) x_h(i,j,t) >= k * demand_h_0(i)
 end-do
 
+! satisfy capacity of charging station, *** 42 is used to calculate demand
+k := 42
+forall (j in charging_points) do
+	forall(t in types) do
+		!sum(i in demand_points) k*(x_e(i,j,t)+x_h(i,j,t)) >= lower_bound(t) * y(j,t)
+		sum(i in demand_points) k*(x_e(i,j,t)+x_h(i,j,t)) <= upper_bound(t) * y(j,t)
+	end-do
+	forall (i in demand_points) do
+	! hybrid cars cant use rapid chargers
+	x_h(i,j,3) = 0
+	end-do
+end-do
 
+! budget constraint
 
+! traffic constraint (in each grid)
+
+! traffic constraint (in city centre)
 
 
 !##SOLVE#########################################################################################
 minimise(total_distance)
 !Display solution if OK
 if(getprobstat = XPRS_OPT) then
- writeln("Problem solved succefully")
- elif(getprobstat = XPRS_UBND) then
- writeln("Problem is unbounded")
+	writeln("Problem solved succefully")
+elif(getprobstat = XPRS_UBND) then
+ 	writeln("Problem is unbounded")
 elif(getprobstat = XPRS_INF) then
- writeln("Problem is infeasible")
+ 	writeln("Problem is infeasible")
 end-if
 
 forall(i in charging_points)do
 	forall (j in demand_points) do
-	if getsol(x_e(i,j)) > 0 then
-	writeln(getsol(x_e(i,j)))
-	end-if
+	forall(t in types) do
+		if getsol(x_h(i,j,t)) > 0 then
+			writeln(i ,", " ,j)
+		end-if
+	end-do
 	end-do
 end-do
+
 !##DISPLAY RESULTS PROCEDURE#########################################################################################
 
 
 
-writeln("Total cost: ", getobjval,".")
-
-
+writeln("Total distance: ", getobjval,".")
 
 
 end-model
+
+
