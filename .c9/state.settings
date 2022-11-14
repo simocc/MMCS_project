@@ -12,7 +12,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 253,
+        "@height": 60,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -27,8 +27,7 @@
                     "name": "tab4",
                     "path": "",
                     "className": [
-                        "tab4",
-                        "connecting"
+                        "tab4"
                     ],
                     "document": {
                         "changed": false,
@@ -36,12 +35,12 @@
                             "timestamp": 1667574508230
                         },
                         "filter": true,
-                        "title": "very_first_try.mos - Idle",
-                        "tooltip": "very_first_try.mos - Idle",
+                        "title": "very_first_try.mos - Stopped",
+                        "tooltip": "very_first_try.mos - Stopped",
                         "output": {
                             "id": "output251820",
-                            "width": 1648,
-                            "height": 221,
+                            "width": 1264,
+                            "height": 28,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
@@ -64,15 +63,15 @@
             "@ace": 1,
             "@acestatus": 1,
             "@base-step-wizard": 2,
-            "@divider": 5,
+            "@divider": 4,
             "@document": 5,
             "@editorswitch": 1,
             "@fico.mosel.debugger.array.model": 2,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
             "@form": 4,
-            "@menu": 6,
-            "@menuitem": 15,
+            "@menu": 3,
+            "@menuitem": 8,
             "@pane": 3,
             "@session": 3,
             "@tab": 4,
@@ -198,7 +197,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668359649521
+                            "timestamp": 1668428157565
                         },
                         "filter": true,
                         "title": "very_first_try.mos",
@@ -218,7 +217,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668359624189
+                            "timestamp": 1668428260357
                         },
                         "filter": true,
                         "title": "data_1.dat",

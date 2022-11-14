@@ -19,7 +19,7 @@ declarations
 	distance: array(demand_points,demand_points) of real
 	Number_of_Existing_Charging_Points: array(charging_points, types) of real
 	Number_of_Potential_Locations:array(charging_points) of real
-	lower_bound, upper_bound: array(types) of real
+	lower_bound, upper_bound, setup_cost: array(types) of real
 
 	!Vars
 	! x_e(ij)= Number of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
@@ -39,7 +39,7 @@ end-declarations
 
 !##INITIALIZE#########################################################################################
 initialisations from "data_1.dat"
-  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points 
+  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points setup_cost
   lower_bound upper_bound
 end-initialisations
 
@@ -53,8 +53,8 @@ total_distance:= sum(i in demand_points, j in charging_points,t in types) (x_e(i
 !##CONSTRAINTS#########################################################################################
 ! satisfy demand
 forall (j in charging_points) do
-	forall (i in demand_points) do 
-		forall (t in types) do 
+	forall (i in demand_points) do
+		forall (t in types) do
 			x_e(i,j,t) is_integer
 			x_h(i,j,t) is_integer
 			y(j,t) is_integer
@@ -88,11 +88,36 @@ forall (j in charging_points) do
 	end-do
 end-do
 
-! budget constraint
+! budget constraint (use y - Existing_Charging_Points)
 
-! traffic constraint (in each grid)
+! traffic constraint (in each grid and neighbors)
 
 ! traffic constraint (in city centre)
+
+! points of interests
+
+
+fopen("budget.csv",F_OUTPUT)
+writeln("budget",",","min distance")
+budget := 500000.00
+jump:= 100000.00
+repeat
+	! 
+	costs := sum(j in charging_points, t in types) setup_cost(t)*y(j,t) <= budget 
+	!minimize(risk)
+	writeln(budget,",",getobjval)
+	!writeln(strfmt(asset_name(i),11),", ",strfmt(100*getsol(x(i)),5,2))
+	budget := budget + jump
+until ((getprobstat = XPRS_INF) or (budget <= 2000000))
+
+
+
+!fopen("myAns.csv", F_OUTPUT)
+!writeln("asset",",","fraction")
+
+fclose(F_OUTPUT)
+
+
 
 
 !##SOLVE#########################################################################################
