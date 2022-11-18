@@ -12,7 +12,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 60,
+        "@height": 248.60000610351562,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -40,7 +40,7 @@
                         "output": {
                             "id": "output251820",
                             "width": 1264,
-                            "height": 28,
+                            "height": 217,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
@@ -63,19 +63,19 @@
             "@ace": 1,
             "@acestatus": 1,
             "@base-step-wizard": 2,
-            "@divider": 4,
-            "@document": 5,
+            "@divider": 5,
+            "@document": 6,
             "@editorswitch": 1,
             "@fico.mosel.debugger.array.model": 2,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
             "@form": 4,
-            "@menu": 3,
-            "@menuitem": 8,
+            "@menu": 6,
+            "@menuitem": 15,
             "@pane": 3,
-            "@session": 3,
-            "@tab": 4,
-            "@undoManager": 5,
+            "@session": 4,
+            "@tab": 6,
+            "@undoManager": 6,
             "@welcome": 1
         }
     },
@@ -180,6 +180,7 @@
                 "accessList": [
                     "tab1",
                     "tab0",
+                    "tab5",
                     "tab2",
                     "tab3"
                 ]
@@ -197,7 +198,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668428881411
+                            "timestamp": 1668786759065
                         },
                         "filter": true,
                         "title": "very_first_try.mos",
@@ -217,7 +218,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668428260357
+                            "timestamp": 1668786531198
                         },
                         "filter": true,
                         "title": "data_1.dat",
@@ -350,6 +351,26 @@
                         "changed": false
                     },
                     "editorType": "moselarray",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab5",
+                    "path": "/with_years.mos",
+                    "className": [
+                        "tab5"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1668778388939
+                        },
+                        "filter": true,
+                        "title": "with_years.mos",
+                        "tooltip": "/with_years.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
                     "active": false
                 }
             ],
