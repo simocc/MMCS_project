@@ -12,7 +12,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 160.60000610351562,
+        "@height": 126.60003662109375,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -41,7 +41,7 @@
                         "output": {
                             "id": "output251820",
                             "width": 1264,
-                            "height": 129,
+                            "height": 95,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
@@ -72,7 +72,7 @@
                         "output": {
                             "id": "output904500",
                             "width": 1264,
-                            "height": 129,
+                            "height": 95,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "with_years.mos",
@@ -138,7 +138,7 @@
     },
     "panecycle": {
         "json()": [
-            "tab7",
+            "tab5",
             "tab1"
         ]
     },
@@ -207,12 +207,12 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/data_2.dat",
+            "focus": "/with_years.mos",
             "meta": {
                 "accessList": [
-                    "tab7",
-                    "tab0",
                     "tab5",
+                    "tab0",
+                    "tab7",
                     "tab3"
                 ]
             },
@@ -223,12 +223,13 @@
                     "name": "tab5",
                     "path": "/with_years.mos",
                     "className": [
-                        "tab5"
+                        "tab5",
+                        "focus"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1669031478332
+                            "timestamp": 1669031969927
                         },
                         "filter": true,
                         "title": "with_years.mos",
@@ -236,7 +237,7 @@
                         "ace": {}
                     },
                     "editorType": "ace",
-                    "active": false
+                    "active": true
                 },
                 {
                     "type": "tab",
@@ -263,13 +264,12 @@
                     "name": "tab7",
                     "path": "/data_2.dat",
                     "className": [
-                        "tab7",
-                        "focus"
+                        "tab7"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668813417044
+                            "timestamp": 1669031493669
                         },
                         "filter": true,
                         "title": "data_2.dat",
@@ -277,7 +277,7 @@
                         "ace": {}
                     },
                     "editorType": "ace",
-                    "active": true
+                    "active": false
                 },
                 {
                     "type": "tab",

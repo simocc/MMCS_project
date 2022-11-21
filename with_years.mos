@@ -75,8 +75,8 @@ forall (j in charging_points) do
 				y(a,t,j) is_integer
 				yy(a,t,j) is_integer
 				ii(a,j) is_binary
-				z(a,j) is_binary 
-				zz(a,j) is_binary 
+				z(a,j) is_binary
+				zz(a,j) is_binary
 				setup(j) is_integer
 			end-do
 		end-do
@@ -86,7 +86,7 @@ end-do
 
 ! define yy
 forall(a in years,j in charging_points, t in types) do
-	sum(b in 1..a) yy(b,t,j) = y(a,t,j) 
+	sum(b in 1..a) yy(b,t,j) = y(a,t,j)
 end-do
 
 ! satisfy potential charging points
@@ -123,13 +123,13 @@ end-do
 forall (j in charging_points, a in years) do
 	sum(t in types) y(a,t,j) <= 10
 	10*z(a,j) >= sum(t in types) yy(a,t,j) ! whether we are opening new charging stations
-	z(a,j) + zz(a,j) - ii(a,j) <= 1  
+	z(a,j) + zz(a,j) - ii(a,j) <= 1
 end-do
 
 forall (j in charging_points) do
 	10*zz(1,j) >= sum(t in types) Number_of_Existing_Charging_Points(t,j)
 	forall(a in 2..4) do
-	10*zz(a,j) >= sum(t in types) y(a-1,t,j) ! no existing charging station in previous year
+	10*(1-zz(a,j)) >= sum(t in types) y(a-1,t,j) ! no existing charging station in previous year
 	end-do
 end-do
 
@@ -149,14 +149,14 @@ budget := 100000000
 !jump:= 250
 !repeat
 	! -Number_of_Existing_Charging_Points(j,t))
-costs := sum(j in charging_points, t in types, a in years) (setup_cost(t)*(y(a,t,j)-4*Number_of_Existing_Charging_Points(t,j)) + z(a,j)*15000 +	(z(a,j) + zz(a,j) - ii(a,j))*20000) 
-minimise(total_distance)
+costs := sum(j in charging_points, t in types, a in years) (setup_cost(t)*(y(a,t,j)-4*Number_of_Existing_Charging_Points(t,j)) + z(a,j)*15000 +	(z(a,j) + zz(a,j) - ii(a,j))*20000)
+
 !	writeln(budget,",",getobjval)
 !	budget := budget + jump
 !until ((getprobstat = XPRS_INF) or (budget > 1250000))
 
 ! ! setup cost
-! forall(j in charging_points) do 
+! forall(j in charging_points) do
 ! 	if (sum(t in types) Number_of_Existing_Charging_Points(t,j) <> 0 ) then ! e!=0
 ! 		50000 * ii(j) >= sum(t in types, a in years) (y(a,t,j) - Number_of_Existing_Charging_Points(t,j)) ! b != 0
 ! 		setup(j) >= ii(j)*infra_cost(1) ! extend cost
@@ -167,7 +167,7 @@ minimise(total_distance)
 ! end-do
 
 costs <= budget
-
+minimise(total_distance)
 
 
 
