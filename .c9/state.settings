@@ -12,7 +12,7 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 253,
+        "@height": 248.60000610351562,
         "@maximized": "false",
         "json()": {
             "meta": {
@@ -27,8 +27,7 @@
                     "name": "tab4",
                     "path": "",
                     "className": [
-                        "tab4",
-                        "connecting"
+                        "tab4"
                     ],
                     "document": {
                         "changed": false,
@@ -36,12 +35,12 @@
                             "timestamp": 1667574508230
                         },
                         "filter": true,
-                        "title": "very_first_try.mos - Idle",
-                        "tooltip": "very_first_try.mos - Idle",
+                        "title": "very_first_try.mos - Stopped",
+                        "tooltip": "very_first_try.mos - Stopped",
                         "output": {
                             "id": "output251820",
-                            "width": 1648,
-                            "height": 221,
+                            "width": 1264,
+                            "height": 217,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
@@ -65,7 +64,7 @@
             "@acestatus": 1,
             "@base-step-wizard": 2,
             "@divider": 5,
-            "@document": 5,
+            "@document": 6,
             "@editorswitch": 1,
             "@fico.mosel.debugger.array.model": 2,
             "@fico.vdl.attributes-panel": 1,
@@ -74,9 +73,9 @@
             "@menu": 6,
             "@menuitem": 15,
             "@pane": 3,
-            "@session": 3,
-            "@tab": 4,
-            "@undoManager": 5,
+            "@session": 4,
+            "@tab": 6,
+            "@undoManager": 6,
             "@welcome": 1
         }
     },
@@ -181,6 +180,7 @@
                 "accessList": [
                     "tab1",
                     "tab0",
+                    "tab5",
                     "tab2",
                     "tab3"
                 ]
@@ -198,7 +198,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668359649521
+                            "timestamp": 1668786759065
                         },
                         "filter": true,
                         "title": "very_first_try.mos",
@@ -218,7 +218,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668359624189
+                            "timestamp": 1668786531198
                         },
                         "filter": true,
                         "title": "data_1.dat",
@@ -351,6 +351,26 @@
                         "changed": false
                     },
                     "editorType": "moselarray",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab5",
+                    "path": "/with_years.mos",
+                    "className": [
+                        "tab5"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1668778388939
+                        },
+                        "filter": true,
+                        "title": "with_years.mos",
+                        "tooltip": "/with_years.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
                     "active": false
                 }
             ],

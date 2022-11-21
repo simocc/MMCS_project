@@ -19,7 +19,8 @@ declarations
 	distance: array(demand_points,demand_points) of real
 	Number_of_Existing_Charging_Points: array(charging_points, types) of real
 	Number_of_Potential_Locations:array(charging_points) of real
-	lower_bound, upper_bound: array(types) of real
+	lower_bound, upper_bound, setup_cost: array(types) of real
+	infra_cost: array(1..2) of real
 
 	!Vars
 	! x_e(ij)= Number of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
@@ -31,6 +32,9 @@ declarations
 	! The number of charging stations in grid j, including existing stations
 	y : array(charging_points, types) of mpvar
 
+	ii: array(charging_points) of mpvar
+	setup: array(charging_points) of mpvar
+
 end-declarations
 
 !Forward display procedure
@@ -39,7 +43,7 @@ end-declarations
 
 !##INITIALIZE#########################################################################################
 initialisations from "data_1.dat"
-  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points 
+  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points setup_cost infra_cost
   lower_bound upper_bound
 end-initialisations
 
@@ -53,11 +57,13 @@ total_distance:= sum(i in demand_points, j in charging_points,t in types) (x_e(i
 !##CONSTRAINTS#########################################################################################
 ! satisfy demand
 forall (j in charging_points) do
-	forall (i in demand_points) do 
-		forall (t in types) do 
+	forall (i in demand_points) do
+		forall (t in types) do
 			x_e(i,j,t) is_integer
 			x_h(i,j,t) is_integer
 			y(j,t) is_integer
+			ii(j) is_binary
+			setup(j) is_integer
 		end-do
 	end-do
 end-do
@@ -69,7 +75,7 @@ forall (j in charging_points) do
 end-do
 
 ! satisfy demand for each grid, multiply demand by a factor to satisfy less customers
-k := 1
+k := 0.8
 forall (i in demand_points) do
   sum(j in charging_points,t in types) x_e(i,j,t) >= k * demand_e_0(i)
   sum(j in charging_points,t in types) x_h(i,j,t) >= k * demand_h_0(i)
@@ -79,7 +85,7 @@ end-do
 k := 42
 forall (j in charging_points) do
 	forall(t in types) do
-		!sum(i in demand_points) k*(x_e(i,j,t)+x_h(i,j,t)) >= lower_bound(t) * y(j,t)
+		!sum(i in demand_points) k*(x_e(i,j,t)+x_h(i,j,t)) <= lower_bound(t) * y(j,t)
 		sum(i in demand_points) k*(x_e(i,j,t)+x_h(i,j,t)) <= upper_bound(t) * y(j,t)
 	end-do
 	forall (i in demand_points) do
@@ -88,11 +94,50 @@ forall (j in charging_points) do
 	end-do
 end-do
 
-! budget constraint
+! budget constraint (use y - Existing_Charging_Points)
 
-! traffic constraint (in each grid)
+! traffic constraint (in each grid and neighbors)
 
 ! traffic constraint (in city centre)
+
+! points of interests
+
+
+!fopen("budget.csv",F_OUTPUT)
+!writeln("budget",",","min distance")
+budget := 500000.00
+jump:= 100000.00
+!repeat
+	!
+	costs := sum(j in charging_points, t in types) setup_cost(t)*y(j,t)
+
+	! setup cost
+	forall(j in charging_points) do
+		if (sum(t in types) Number_of_Existing_Charging_Points(j,t) <> 0 ) then ! e!=0
+			50000 * ii(j) >= sum(t in types) (y(j,t) - Number_of_Existing_Charging_Points(j,t)) ! b != 0
+			setup(j) >= ii(j)*infra_cost(1) ! extend cost
+		else ! e == 0
+			50000 * ii(j) >= sum(t in types) y(j,t) ! b != 0, when build = y
+			setup(j) >= ii(j) * infra_cost(2)
+		end-if
+	end-do
+
+	costs + sum(j in charging_points) setup(j) <= budget
+
+	!minimize(risk)
+	writeln(budget,",",getobjval)
+	!writeln(strfmt(asset_name(i),11),", ",strfmt(100*getsol(x(i)),5,2))
+	budget := budget + jump
+!until ((getprobstat = XPRS_INF) or (budget <= 2000000))
+
+
+
+!fopen("myAns.csv", F_OUTPUT)
+!writeln("asset",",","fraction")
+
+!fclose(F_OUTPUT)
+
+
 
 
 !##SOLVE#########################################################################################
@@ -116,10 +161,14 @@ forall(i in charging_points)do
 	end-do
 end-do
 
+forall(j in demand_points) do
+	writeln(getsol(ii(j)))
+end-do
+
 !##DISPLAY RESULTS PROCEDURE#########################################################################################
 
-
-
+writeln("total cost = ", getsol(sum(j in charging_points) setup(j)))
+writeln("total cost = ", getsol(costs))
 writeln("Total distance: ", getobjval,".")
 
 
