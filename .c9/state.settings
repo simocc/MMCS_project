@@ -12,11 +12,12 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 248.60000610351562,
+        "@height": 126.60003662109375,
         "@maximized": "false",
         "json()": {
             "meta": {
                 "accessList": [
+                    "tab1",
                     "tab4"
                 ]
             },
@@ -35,15 +36,46 @@
                             "timestamp": 1667574508230
                         },
                         "filter": true,
-                        "title": "very_first_try.mos - Stopped",
-                        "tooltip": "very_first_try.mos - Stopped",
+                        "title": "very_first_try.mos - Idle",
+                        "tooltip": "very_first_try.mos - Idle",
                         "output": {
                             "id": "output251820",
                             "width": 1264,
-                            "height": 217,
+                            "height": 95,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
+                                "debug": false,
+                                "toolbar": true,
+                                "name": ""
+                            }
+                        }
+                    },
+                    "editorType": "output",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab1",
+                    "path": "",
+                    "className": [
+                        "tab1"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1669031128008
+                        },
+                        "filter": true,
+                        "title": "with_years.mos - Stopped",
+                        "tooltip": "with_years.mos - Stopped",
+                        "output": {
+                            "id": "output904500",
+                            "width": 1264,
+                            "height": 95,
+                            "config": {
+                                "runner": "Mosel",
+                                "command": "with_years.mos",
                                 "debug": false,
                                 "toolbar": true
                             }
@@ -63,19 +95,19 @@
             "@ace": 1,
             "@acestatus": 1,
             "@base-step-wizard": 2,
-            "@divider": 5,
-            "@document": 6,
+            "@divider": 4,
+            "@document": 7,
             "@editorswitch": 1,
-            "@fico.mosel.debugger.array.model": 2,
+            "@fico.mosel.debugger.array.model": 1,
             "@fico.vdl.attributes-panel": 1,
             "@fico.vdl.palette-panel": 1,
             "@form": 4,
-            "@menu": 6,
-            "@menuitem": 15,
+            "@menu": 3,
+            "@menuitem": 8,
             "@pane": 3,
-            "@session": 4,
-            "@tab": 6,
-            "@undoManager": 6,
+            "@session": 6,
+            "@tab": 2,
+            "@undoManager": 7,
             "@welcome": 1
         }
     },
@@ -91,8 +123,8 @@
             "@fullscreen": false,
             "@maximized": true,
             "@minimized": false,
-            "@position": "152:52",
-            "@size": "1182:634"
+            "@position": "-8:-8",
+            "@size": "1534:804"
         }
     },
     "menus": {
@@ -102,12 +134,12 @@
         "@installed": true
     },
     "od": {
-        "@last-run-config": "path:very_first_try.mos"
+        "@last-run-config": "path:with_years.mos"
     },
     "panecycle": {
         "json()": [
-            "tab1",
-            "tab4"
+            "tab5",
+            "tab1"
         ]
     },
     "panels": {
@@ -175,13 +207,12 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/very_first_try.mos",
+            "focus": "/with_years.mos",
             "meta": {
                 "accessList": [
-                    "tab1",
-                    "tab0",
                     "tab5",
-                    "tab2",
+                    "tab0",
+                    "tab7",
                     "tab3"
                 ]
             },
@@ -189,20 +220,20 @@
             "nodes": [
                 {
                     "type": "tab",
-                    "name": "tab1",
-                    "path": "/very_first_try.mos",
+                    "name": "tab5",
+                    "path": "/with_years.mos",
                     "className": [
-                        "tab1",
+                        "tab5",
                         "focus"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668786759065
+                            "timestamp": 1669031969927
                         },
                         "filter": true,
-                        "title": "very_first_try.mos",
-                        "tooltip": "/very_first_try.mos",
+                        "title": "with_years.mos",
+                        "tooltip": "/with_years.mos",
                         "ace": {}
                     },
                     "editorType": "ace",
@@ -218,7 +249,7 @@
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1668786531198
+                            "timestamp": 1669029746488
                         },
                         "filter": true,
                         "title": "data_1.dat",
@@ -230,85 +261,22 @@
                 },
                 {
                     "type": "tab",
-                    "name": "tab2",
-                    "path": "",
+                    "name": "tab7",
+                    "path": "/data_2.dat",
                     "className": [
-                        "tab2"
+                        "tab7"
                     ],
                     "document": {
-                        "filter": true,
-                        "title": "Inspect: x_e",
-                        "tooltip": "Inspect: x_e",
-                        "moselarray": {
-                            "varInfo": {
-                                "expr": "x_e",
-                                "type": {
-                                    "name": "array",
-                                    "element": {
-                                        "name": "mpvar",
-                                        "attributes": [
-                                            {
-                                                "name": "lb",
-                                                "type": {
-                                                    "name": "real"
-                                                }
-                                            },
-                                            {
-                                                "name": "name",
-                                                "type": {
-                                                    "name": "string"
-                                                }
-                                            },
-                                            {
-                                                "name": "rcost",
-                                                "type": {
-                                                    "name": "real"
-                                                }
-                                            },
-                                            {
-                                                "name": "sol",
-                                                "type": {
-                                                    "name": "real"
-                                                }
-                                            },
-                                            {
-                                                "name": "ub",
-                                                "type": {
-                                                    "name": "real"
-                                                }
-                                            }
-                                        ]
-                                    },
-                                    "indexes": [
-                                        {
-                                            "name": "demand_points",
-                                            "type": {
-                                                "name": "set",
-                                                "element": {
-                                                    "name": "integer"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "name": "charging_points",
-                                            "type": {
-                                                "name": "set",
-                                                "element": {
-                                                    "name": "integer"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "changed": false,
                         "meta": {
-                            "timestamp": 1668176533900
+                            "timestamp": 1669031493669
                         },
-                        "changed": false
+                        "filter": true,
+                        "title": "data_2.dat",
+                        "tooltip": "/data_2.dat",
+                        "ace": {}
                     },
-                    "editorType": "moselarray",
+                    "editorType": "ace",
                     "active": false
                 },
                 {
@@ -351,26 +319,6 @@
                         "changed": false
                     },
                     "editorType": "moselarray",
-                    "active": false
-                },
-                {
-                    "type": "tab",
-                    "name": "tab5",
-                    "path": "/with_years.mos",
-                    "className": [
-                        "tab5"
-                    ],
-                    "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1668778388939
-                        },
-                        "filter": true,
-                        "title": "with_years.mos",
-                        "tooltip": "/with_years.mos",
-                        "ace": {}
-                    },
-                    "editorType": "ace",
                     "active": false
                 }
             ],

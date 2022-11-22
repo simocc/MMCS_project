@@ -20,7 +20,7 @@ declarations
 	Number_of_Existing_Charging_Points: array(charging_points, types) of real
 	Number_of_Potential_Locations:array(charging_points) of real
 	lower_bound, upper_bound, setup_cost: array(types) of real
-	infra_cost: array(1..2) of real
+	infra_cost: 20000
 
 	!Vars
 	! x_e(ij)= Number of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
@@ -43,7 +43,7 @@ end-declarations
 
 !##INITIALIZE#########################################################################################
 initialisations from "data_1.dat"
-  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points setup_cost infra_cost
+  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points setup_cost
   lower_bound upper_bound
 end-initialisations
 

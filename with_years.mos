@@ -24,21 +24,27 @@ declarations
 	!Param
 	demand_e_0: array(years, demand_points) of real
 	demand_h_0: array(years, demand_points) of real
-	distance: array(demand_points,demand_points) of real
+	distance: array(demand_points,charging_points) of real
 	Number_of_Existing_Charging_Points: array(types, charging_points) of real
 	Number_of_Potential_Locations:array(charging_points) of real
 	lower_bound, upper_bound, setup_cost: array(types) of real
+	infra_cost: array(1..2) of real
 
 	!Vars
-	! x_e(ij)= Number of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for full electric
-	x_e: array(demand_points,charging_points,types,years) of mpvar
+	! x_e(ij)= Number of charging cycles demanded by gsrid j, and satisfyed by a charger in grid i, for full electric
+	x_e: array(years,types, demand_points,charging_points) of mpvar
 
 	! x_h(ij)= Number of charging cycles demanded by grid j, and satisfyed by a charger in grid i, for hybrid
-	x_h: array(demand_points,charging_points,types,years) of mpvar
+	x_h: array(charging_points, types, demand_points,charging_points) of mpvar
 
 	! The number of charging stations in grid j, including existing stations
-	y: array(charging_points, types, years) of mpvar
+	y: array(years, types, charging_points) of mpvar
 
+	ii: array(years, charging_points) of mpvar ! ii = 1 when we build new stations in year a and there were no existing stations in year a-1
+	setup: array(charging_points) of mpvar
+	yy: array(years, types, charging_points) of mpvar ! y(a) - y(a-1)
+	z: array(years, charging_points) of mpvar ! z = 1 if we are building new stations in year a
+	zz: array(years, charging_points) of mpvar ! zz = 1 if there were existing stations
 end-declarations
 
 !Forward display procedure
@@ -47,13 +53,13 @@ end-declarations
 
 !##INITIALIZE#########################################################################################
 initialisations from "data_2.dat"
-  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points setup_cost
+  demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points setup_cost infra_cost
   lower_bound upper_bound
 end-initialisations
 
 
 !##OBJECTIVE FUNCTION##################################################################################
-total_distance:= sum(i in demand_points, j in charging_points, t in types, a in years) ((x_e(i,j,t,a) +  x_h(i,j,t,a))*distance(i,j)*(0.4))
+total_distance:= sum(i in demand_points, j in charging_points, t in types, a in years) ((x_e(a,t,i,j) +  x_h(a,t,i,j))*distance(i,j)*(0.4)) ! in km
 
 
 
@@ -64,25 +70,36 @@ forall (j in charging_points) do
 	forall (i in demand_points) do
 		forall (t in types) do
 			forall (a in years) do
-				x_e(i,j,t,a) is_integer
-				x_h(i,j,t,a) is_integer
-				y(j,t,a) is_integer
+				x_e(a,t,i,j) is_integer
+				x_h(a,t,i,j) is_integer
+				y(a,t,j) is_integer
+				yy(a,t,j) is_integer
+				ii(a,j) is_binary
+				z(a,j) is_binary
+				zz(a,j) is_binary
+				setup(j) is_integer
 			end-do
 		end-do
 	end-do
 end-do
 
+
+! define yy
+forall(a in years,j in charging_points, t in types) do
+	sum(b in 1..a) yy(b,t,j) = y(a,t,j)
+end-do
+
 ! satisfy potential charging points
 forall (j in charging_points, a in years) do
-	sum(t in types) y(j,t,a) >=  sum(t in types) Number_of_Existing_Charging_Points(t,j)
-	sum(t in types) y(j,t,a) <= Number_of_Potential_Locations(j) + sum(t in types) Number_of_Existing_Charging_Points(t,j)
+	sum(t in types) y(a,t,j) >=  sum(t in types) Number_of_Existing_Charging_Points(t,j)
+	sum(t in types) y(a,t,j) <= Number_of_Potential_Locations(j) + sum(t in types) Number_of_Existing_Charging_Points(t,j)
 end-do
 
 ! satisfy demand for each grid, multiply demand by a factor to satisfy less customers
 
 forall (a in years, i in demand_points) do
-  sum(j in charging_points,t in types) x_e(i,j,t,a) >= k * demand_e_0(a,i)
-  sum(j in charging_points,t in types) x_h(i,j,t,a) >= k * demand_h_0(a,i)
+  sum(j in charging_points,t in types) x_e(a,t,i,j) >= k * demand_e_0(a,i)
+  sum(j in charging_points,t in types) x_h(a,t,i,j) >= k * demand_h_0(a,i)
 end-do
 
 ! satisfy capacity of charging station, *** 42 is used to calculate demand
@@ -90,11 +107,11 @@ end-do
 forall (j in charging_points) do
 	forall(t in types,a in years) do
 		!sum(i in demand_points) k*(x_e(i,j,t)+x_h(i,j,t)) >= lower_bound(t) * y(j,t)
-		sum(i in demand_points) (k_e*x_e(i,j,t,a)+k_h*x_h(i,j,t,a)) <= upper_bound(t) * y(j,t,a)
+		sum(i in demand_points) (k_e*x_e(a,t,i,j)+k_h*x_h(a,t,i,j)) <= upper_bound(t) * y(a,t,j)
 	end-do
 	forall (i in demand_points,a in years) do
 	! hybrid cars cant use rapid chargers
-	x_h(i,j,3,a) = 0
+	x_h(a,3,i,j) = 0
 	end-do
 end-do
 
@@ -104,29 +121,53 @@ end-do
 
 ! traffic constraint (in city centre)
 forall (j in charging_points, a in years) do
-	sum(t in types) y(j,t,a) <= 10
+	sum(t in types) y(a,t,j) <= 10
+	10*z(a,j) >= sum(t in types) yy(a,t,j) ! whether we are opening new charging stations
+	z(a,j) + zz(a,j) - ii(a,j) <= 1
+end-do
+
+forall (j in charging_points) do
+	10*zz(1,j) >= sum(t in types) Number_of_Existing_Charging_Points(t,j)
+	forall(a in 2..4) do
+	10*(1-zz(a,j)) >= sum(t in types) y(a-1,t,j) ! no existing charging station in previous year
+	end-do
 end-do
 
 ! points of interests
 
 !Charging Point Balance Constraints
 forall (j in charging_points, t in types, a in 1..3) do
-	y(j,t,a) <= y(j,t,a+1)
+	y(a,t,j) <= y(a+1,t,j)
 end-do
+
 
 
 ! budget constraint (use y - Existing_Charging_Points)
 !fopen("budget.csv",F_OUTPUT)
 !writeln("budget",",","min distance")
-budget := 1000000
+budget := 100000000
 !jump:= 250
 !repeat
 	! -Number_of_Existing_Charging_Points(j,t))
-sum(j in charging_points, t in types, a in years) (setup_cost(t)*(y(j,t,a)-4*Number_of_Existing_Charging_Points(t,j))) <= budget
-minimise(total_distance)
+costs := sum(j in charging_points, t in types, a in years) (setup_cost(t)*(y(a,t,j)-4*Number_of_Existing_Charging_Points(t,j)) + z(a,j)*15000 +	(z(a,j) + zz(a,j) - ii(a,j))*20000)
+
 !	writeln(budget,",",getobjval)
 !	budget := budget + jump
 !until ((getprobstat = XPRS_INF) or (budget > 1250000))
+
+! ! setup cost
+! forall(j in charging_points) do
+! 	if (sum(t in types) Number_of_Existing_Charging_Points(t,j) <> 0 ) then ! e!=0
+! 		50000 * ii(j) >= sum(t in types, a in years) (y(a,t,j) - Number_of_Existing_Charging_Points(t,j)) ! b != 0
+! 		setup(j) >= ii(j)*infra_cost(1) ! extend cost
+! 	else ! e == 0
+! 		50000 * ii(j) >= sum(t in types, a in years) y(a,t,j) ! b != 0, when build = y **** need to consider the year
+! 		setup(j) >= ii(j) * infra_cost(2)
+! 	end-if
+! end-do
+
+costs <= budget
+minimise(total_distance)
 
 
 
@@ -159,10 +200,13 @@ end-if
 !	end-do
 !end-do
 
-forall(a in years, j in charging_points, t in types) do
-	if getsol(y(j,t,a)) > 0 then
-		writeln("Open ", getsol(y(j,t,a)), " stations in year ", a,  " in grid ", j, " with type ", t)
+forall(a in years) do
+writeln("For year ", a)
+forall(j in charging_points, t in types) do
+	if getsol(y(a,t,j)) > 0 then
+		writeln("Open ", getsol(y(a,t,j)), " stations in grid ", j, " with type ", t)
 	end-if
+end-do
 end-do
 
 
