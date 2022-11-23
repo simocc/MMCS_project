@@ -12,13 +12,14 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 126.60003662109375,
+        "@height": 481.60003662109375,
         "@maximized": "false",
         "json()": {
             "meta": {
                 "accessList": [
-                    "tab1",
-                    "tab4"
+                    "tab4",
+                    "tab3",
+                    "tab1"
                 ]
             },
             "name": "pane2",
@@ -31,17 +32,14 @@
                         "tab4"
                     ],
                     "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1667574508230
-                        },
                         "filter": true,
                         "title": "very_first_try.mos - Idle",
                         "tooltip": "very_first_try.mos - Idle",
                         "output": {
                             "id": "output251820",
-                            "width": 1264,
-                            "height": 95,
+                            "width": 1648,
+                            "height": 120,
+                            "scrollTop": -1,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "very_first_try.mos",
@@ -49,7 +47,12 @@
                                 "toolbar": true,
                                 "name": ""
                             }
-                        }
+                        },
+                        "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "meta": {
+                            "timestamp": 1667574508230
+                        },
+                        "changed": false
                     },
                     "editorType": "output",
                     "active": false
@@ -67,17 +70,78 @@
                             "timestamp": 1669031128008
                         },
                         "filter": true,
-                        "title": "with_years.mos - Stopped",
-                        "tooltip": "with_years.mos - Stopped",
+                        "title": "with_years.mos - Idle",
+                        "tooltip": "with_years.mos - Idle",
                         "output": {
                             "id": "output904500",
                             "width": 1264,
-                            "height": 95,
+                            "height": 450,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "with_years.mos",
+                                "debug": true,
+                                "toolbar": true,
+                                "name": ""
+                            }
+                        }
+                    },
+                    "editorType": "output",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab3",
+                    "path": "",
+                    "className": [
+                        "tab3",
+                        "running"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1669220965203
+                        },
+                        "filter": true,
+                        "title": "with_years_v2.mos - Running",
+                        "tooltip": "with_years_v2.mos - Running",
+                        "output": {
+                            "id": "output952860",
+                            "width": 1264,
+                            "height": 450,
+                            "config": {
+                                "runner": "Mosel",
+                                "command": "with_years_v2.mos",
                                 "debug": false,
                                 "toolbar": true
+                            },
+                            "running": {
+                                "pid": -4,
+                                "name": "output952860",
+                                "running": 2,
+                                "runner": [
+                                    {
+                                        "caption": "Mosel",
+                                        "cmd": [
+                                            "C:\\xpressmp\\workbench\\.c9\\node.exe",
+                                            "C:\\xpressmp\\workbench\\.c9\\node_modules\\mosel-runner\\bin\\mosel-runner",
+                                            "run",
+                                            "${debug?--debug=6167}",
+                                            "--basedir",
+                                            "$project_path",
+                                            "$file",
+                                            "--stack-trace=20",
+                                            "$args"
+                                        ],
+                                        "cmdCleanup": [
+                                            "true"
+                                        ],
+                                        "debugger": "mosel",
+                                        "debugport": 6167,
+                                        "selector": "\\.(mos|py)$",
+                                        "$builtin": true
+                                    }
+                                ],
+                                "debug": false
                             }
                         }
                     },
@@ -95,8 +159,9 @@
             "@ace": 1,
             "@acestatus": 1,
             "@base-step-wizard": 2,
+            "@datagrid": 1,
             "@divider": 4,
-            "@document": 7,
+            "@document": 10,
             "@editorswitch": 1,
             "@fico.mosel.debugger.array.model": 1,
             "@fico.vdl.attributes-panel": 1,
@@ -105,9 +170,10 @@
             "@menu": 3,
             "@menuitem": 8,
             "@pane": 3,
-            "@session": 6,
-            "@tab": 2,
-            "@undoManager": 7,
+            "@preferences": 1,
+            "@session": 9,
+            "@tab": 4,
+            "@undoManager": 10,
             "@welcome": 1
         }
     },
@@ -123,8 +189,8 @@
             "@fullscreen": false,
             "@maximized": true,
             "@minimized": false,
-            "@position": "-8:-8",
-            "@size": "1534:804"
+            "@position": "360:40",
+            "@size": "1200:920"
         }
     },
     "menus": {
@@ -134,12 +200,12 @@
         "@installed": true
     },
     "od": {
-        "@last-run-config": "path:with_years.mos"
+        "@last-run-config": "path:main.py"
     },
     "panecycle": {
         "json()": [
-            "tab5",
-            "tab1"
+            "tab8",
+            "tab3"
         ]
     },
     "panels": {
@@ -207,29 +273,52 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/with_years.mos",
+            "focus": "/with_years_v2.mos",
             "meta": {
                 "accessList": [
+                    "tab8",
                     "tab5",
                     "tab0",
                     "tab7",
-                    "tab3"
+                    "tab2",
+                    "tab6",
+                    "tab9"
                 ]
             },
             "name": "pane1",
             "nodes": [
                 {
                     "type": "tab",
-                    "name": "tab5",
-                    "path": "/with_years.mos",
+                    "name": "tab8",
+                    "path": "/with_years_v2.mos",
                     "className": [
-                        "tab5",
+                        "tab8",
                         "focus"
                     ],
                     "document": {
                         "changed": false,
                         "meta": {
-                            "timestamp": 1669031969927
+                            "timestamp": 1669220256762
+                        },
+                        "filter": true,
+                        "title": "with_years_v2.mos",
+                        "tooltip": "/with_years_v2.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": true
+                },
+                {
+                    "type": "tab",
+                    "name": "tab5",
+                    "path": "/with_years.mos",
+                    "className": [
+                        "tab5"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1669219192746
                         },
                         "filter": true,
                         "title": "with_years.mos",
@@ -237,7 +326,7 @@
                         "ace": {}
                     },
                     "editorType": "ace",
-                    "active": true
+                    "active": false
                 },
                 {
                     "type": "tab",
@@ -247,14 +336,40 @@
                         "tab0"
                     ],
                     "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1669029746488
-                        },
                         "filter": true,
                         "title": "data_1.dat",
                         "tooltip": "/data_1.dat",
-                        "ace": {}
+                        "ace": {
+                            "folds": [],
+                            "scrolltop": 0,
+                            "scrollleft": 0,
+                            "selection": {
+                                "start": {
+                                    "row": 6,
+                                    "column": 0
+                                },
+                                "end": {
+                                    "row": 6,
+                                    "column": 0
+                                },
+                                "isBackwards": false
+                            },
+                            "options": {
+                                "guessTabSize": true,
+                                "useWrapMode": false,
+                                "wrapToView": true
+                            },
+                            "firstLineState": {
+                                "row": 21,
+                                "state": "start",
+                                "mode": "ace/mode/text"
+                            }
+                        },
+                        "hash": "4b392df2d4e940c6f693e3468542a995fe575236",
+                        "meta": {
+                            "timestamp": 1669029746477
+                        },
+                        "changed": false
                     },
                     "editorType": "ace",
                     "active": false
@@ -267,58 +382,159 @@
                         "tab7"
                     ],
                     "document": {
-                        "changed": false,
-                        "meta": {
-                            "timestamp": 1669031493669
-                        },
                         "filter": true,
                         "title": "data_2.dat",
                         "tooltip": "/data_2.dat",
-                        "ace": {}
+                        "ace": {
+                            "folds": [],
+                            "scrolltop": 0,
+                            "scrollleft": 0,
+                            "selection": {
+                                "start": {
+                                    "row": 27,
+                                    "column": 167
+                                },
+                                "end": {
+                                    "row": 27,
+                                    "column": 167
+                                },
+                                "isBackwards": false
+                            },
+                            "options": {
+                                "guessTabSize": true,
+                                "useWrapMode": false,
+                                "wrapToView": true
+                            },
+                            "firstLineState": {
+                                "row": 20,
+                                "state": "start",
+                                "mode": "ace/mode/text"
+                            }
+                        },
+                        "hash": "a27f6530dca33947c54f9b85a28efba39538b961",
+                        "meta": {
+                            "timestamp": 1669031493658
+                        },
+                        "changed": false
                     },
                     "editorType": "ace",
                     "active": false
                 },
                 {
                     "type": "tab",
-                    "name": "tab3",
-                    "path": "",
+                    "name": "tab2",
+                    "path": "/reduced",
                     "className": [
-                        "tab3"
+                        "tab2"
                     ],
                     "document": {
                         "filter": true,
-                        "title": "Inspect: demand",
-                        "tooltip": "Inspect: demand",
-                        "moselarray": {
-                            "varInfo": {
-                                "expr": "demand",
-                                "type": {
-                                    "name": "array",
-                                    "element": {
-                                        "name": "real"
-                                    },
-                                    "indexes": [
-                                        {
-                                            "name": "demand_points",
-                                            "type": {
-                                                "name": "set",
-                                                "element": {
-                                                    "name": "integer"
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
+                        "title": "reduced",
+                        "tooltip": "/reduced",
+                        "ace": {
+                            "folds": [],
+                            "scrolltop": 1680,
+                            "scrollleft": 0,
+                            "selection": {
+                                "start": {
+                                    "row": 123,
+                                    "column": 73
+                                },
+                                "end": {
+                                    "row": 123,
+                                    "column": 73
+                                },
+                                "isBackwards": false
+                            },
+                            "options": {
+                                "guessTabSize": true,
+                                "useWrapMode": false,
+                                "wrapToView": true
+                            },
+                            "firstLineState": {
+                                "row": 119,
+                                "state": "start",
+                                "mode": "ace/mode/text"
                             }
                         },
-                        "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "hash": "e50accf6751661be1c2eb21d49f4c517d75c7ef8",
                         "meta": {
-                            "timestamp": 1668176755135
+                            "timestamp": 1669144738903
                         },
                         "changed": false
                     },
-                    "editorType": "moselarray",
+                    "editorType": "ace",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab6",
+                    "path": "",
+                    "className": [
+                        "tab6"
+                    ],
+                    "document": {
+                        "filter": true,
+                        "title": "Preferences",
+                        "preferences": {
+                            "activePanel": "preferences.keybindings"
+                        },
+                        "hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+                        "meta": {
+                            "timestamp": 1669219444666
+                        },
+                        "changed": false
+                    },
+                    "editorType": "preferences",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab9",
+                    "path": "/.c9/project.settings",
+                    "className": [
+                        "tab9"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "filter": true,
+                        "title": "project.settings",
+                        "tooltip": "/.c9/project.settings",
+                        "ace": {
+                            "folds": [],
+                            "customSyntax": "javascript",
+                            "scrolltop": 0,
+                            "scrollleft": 0,
+                            "selection": {
+                                "start": {
+                                    "row": 8,
+                                    "column": 33
+                                },
+                                "end": {
+                                    "row": 8,
+                                    "column": 33
+                                },
+                                "isBackwards": false
+                            },
+                            "options": {
+                                "guessTabSize": true,
+                                "useWrapMode": false,
+                                "wrapToView": true
+                            },
+                            "firstLineState": {
+                                "row": 3,
+                                "state": "start",
+                                "mode": "ace/mode/javascript"
+                            }
+                        },
+                        "meta": {
+                            "config": "/.c9/project.settings",
+                            "newfile": false,
+                            "nofs": true,
+                            "timestamp": 1669219923226
+                        }
+                    },
+                    "editorType": "ace",
                     "active": false
                 }
             ],
