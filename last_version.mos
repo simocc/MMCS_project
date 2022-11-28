@@ -56,7 +56,7 @@ end-declarations
 !##INITIALIZE#########################################################################################
 initialisations from "dat3.dat"
   demand_e_0 demand_h_0 distance Number_of_Potential_Locations Number_of_Existing_Charging_Points setup_cost infra_cost
-  lower_bound upper_bound charger_grid demand_grid amenities
+  lower_bound upper_bound charger_grid demand_grid
 end-initialisations
 
 
@@ -161,13 +161,8 @@ forall (j in charging_points, t in types, a in 1..(number_of_years-1)) do
 	y(a,t,j) <= y(a+1,t,j)
 end-do
 
-! points of interests (amenities)
-!forall(a in years, b in poi) do
-!	sum(t in types) y(a,t,amenities(b)) >= 1 !0.2*sum(j in charging_points,t in types) y(a,t,j)
-!end-do
 
-
-budget := 350000
+budget := 500000
 ! Total cost for each year equals the sum of the setup costs of all new charging points built, plus the total
 ! infrastructure cost for rapid chargers in that year.
 forall (a in years) do
@@ -196,15 +191,16 @@ end-if
 forall(a in years) do
 writeln("For year ", a)
 	forall(j in charging_points, t in types) do
-	if getsol(y(a,t,j)) > 0 then
-		writeln("In grid ", charger_grid(j), ", type ", t, ": ", getsol(y(a,t,j)), ", infra cost: ", getsol(infra(a,j)), ", existn: ", getsol(existn(a,j)), ", ii: ", getsol(be(a,j)))
+	if getsol(y_new(a,t,j)) > 0 then
+		writeln("In grid ", charger_grid(j), ", build type ", t, ", quantity: ", getsol(y_new(a,t,j)))
 	end-if
 end-do
 end-do
 
+
 ! output as csv file
 fopen("Chargers450100.csv", F_OUTPUT)
-writeln("Ref",",","Slow_year1", "Fast_year1" ,"Rapid_year1"," infra cost","Slow_year2", "Fast_year2" ,"Rapid_year2"," infra cost","Slow_year3", "Fast_year3" ,"Rapid_year3"," infra cost","Slow_year4", "Fast_year4" ,"Rapid_year4"," infra cost")
+writeln("Ref",",","Slow_year1",",", "Fast_year1",",","Rapid_year1",","," infra cost",",","Slow_year2",",", "Fast_year2",",","Rapid_year2",","," infra cost",",","Slow_year3",",","Fast_year3" ,",","Rapid_year3",","," infra cost",",","Slow_year4",",","Fast_year4" ,",","Rapid_year4",","," infra cost")
 forall(j in charging_points) do
 	writeln(charger_grid(j),",", getsol(y(1,1,j)),",", getsol(y(1,2,j)),",", getsol(y(1,3,j)),",",getsol(infra(1,j)),"," , getsol(y(2,1,j)),",", getsol(y(2,2,j)),",", getsol(y(2,3,j)),",",getsol(infra(2,j)),",", getsol(y(3,1,j)),",", getsol(y(3,2,j)),",", getsol(y(3,3,j)),",",getsol(infra(3,j)),",", getsol(y(4,1,j)),",", getsol(y(4,2,j)),",", getsol(y(4,3,j)),",",getsol(infra(4,j)))
 end-do
@@ -220,9 +216,6 @@ forall (a in years) do
 costs := sum(j in charging_points, t in types) (setup_cost(t)*y_new(a,t,j)) + sum(j in charging_points) infra(a,j)
 writeln("Total money needed: ", getsol(costs))
 end-do
-
-
-
 
 
 end-model

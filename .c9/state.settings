@@ -12,11 +12,12 @@
     },
     "console": {
         "@expanded": true,
-        "@height": 481.60003662109375,
+        "@height": 579.6000366210938,
         "@maximized": "false",
         "json()": {
             "meta": {
                 "accessList": [
+                    "tab10",
                     "tab4",
                     "tab3",
                     "tab1"
@@ -66,9 +67,6 @@
                     ],
                     "document": {
                         "changed": false,
-                        "meta": {
-                            "timestamp": 1669031128008
-                        },
                         "filter": true,
                         "title": "with_years.mos - Idle",
                         "tooltip": "with_years.mos - Idle",
@@ -76,6 +74,7 @@
                             "id": "output904500",
                             "width": 1264,
                             "height": 450,
+                            "scrollTop": -1,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "with_years.mos",
@@ -83,6 +82,9 @@
                                 "toolbar": true,
                                 "name": ""
                             }
+                        },
+                        "meta": {
+                            "timestamp": 1669031128008
                         }
                     },
                     "editorType": "output",
@@ -93,8 +95,7 @@
                     "name": "tab3",
                     "path": "",
                     "className": [
-                        "tab3",
-                        "running"
+                        "tab3"
                     ],
                     "document": {
                         "changed": false,
@@ -102,46 +103,48 @@
                             "timestamp": 1669220965203
                         },
                         "filter": true,
-                        "title": "with_years_v2.mos - Running",
-                        "tooltip": "with_years_v2.mos - Running",
+                        "title": "with_years_v2.mos - Idle",
+                        "tooltip": "with_years_v2.mos - Idle",
                         "output": {
                             "id": "output952860",
                             "width": 1264,
-                            "height": 450,
+                            "height": 548,
                             "config": {
                                 "runner": "Mosel",
                                 "command": "with_years_v2.mos",
                                 "debug": false,
+                                "toolbar": true,
+                                "name": ""
+                            }
+                        }
+                    },
+                    "editorType": "output",
+                    "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab10",
+                    "path": "",
+                    "className": [
+                        "tab10"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1669631857318
+                        },
+                        "filter": true,
+                        "title": "last_version.mos - Stopped",
+                        "tooltip": "last_version.mos - Stopped",
+                        "output": {
+                            "id": "output189070",
+                            "width": 1264,
+                            "height": 548,
+                            "config": {
+                                "runner": "Mosel",
+                                "command": "last_version.mos",
+                                "debug": false,
                                 "toolbar": true
-                            },
-                            "running": {
-                                "pid": -4,
-                                "name": "output952860",
-                                "running": 2,
-                                "runner": [
-                                    {
-                                        "caption": "Mosel",
-                                        "cmd": [
-                                            "C:\\xpressmp\\workbench\\.c9\\node.exe",
-                                            "C:\\xpressmp\\workbench\\.c9\\node_modules\\mosel-runner\\bin\\mosel-runner",
-                                            "run",
-                                            "${debug?--debug=6167}",
-                                            "--basedir",
-                                            "$project_path",
-                                            "$file",
-                                            "--stack-trace=20",
-                                            "$args"
-                                        ],
-                                        "cmdCleanup": [
-                                            "true"
-                                        ],
-                                        "debugger": "mosel",
-                                        "debugport": 6167,
-                                        "selector": "\\.(mos|py)$",
-                                        "$builtin": true
-                                    }
-                                ],
-                                "debug": false
                             }
                         }
                     },
@@ -161,7 +164,7 @@
             "@base-step-wizard": 2,
             "@datagrid": 1,
             "@divider": 4,
-            "@document": 10,
+            "@document": 13,
             "@editorswitch": 1,
             "@fico.mosel.debugger.array.model": 1,
             "@fico.vdl.attributes-panel": 1,
@@ -171,9 +174,9 @@
             "@menuitem": 8,
             "@pane": 3,
             "@preferences": 1,
-            "@session": 9,
-            "@tab": 4,
-            "@undoManager": 10,
+            "@session": 12,
+            "@tab": 11,
+            "@undoManager": 13,
             "@welcome": 1
         }
     },
@@ -200,12 +203,12 @@
         "@installed": true
     },
     "od": {
-        "@last-run-config": "path:main.py"
+        "@last-run-config": "path:last_version.mos"
     },
     "panecycle": {
         "json()": [
-            "tab8",
-            "tab3"
+            "tab0",
+            "tab10"
         ]
     },
     "panels": {
@@ -273,13 +276,13 @@
     },
     "tabs": {
         "json()": {
-            "focus": "/with_years_v2.mos",
+            "focus": "/last_version.mos",
             "meta": {
                 "accessList": [
-                    "tab8",
-                    "tab5",
                     "tab0",
                     "tab7",
+                    "tab8",
+                    "tab5",
                     "tab2",
                     "tab6",
                     "tab9"
@@ -293,12 +296,13 @@
                     "path": "/with_years_v2.mos",
                     "className": [
                         "tab8",
-                        "focus"
+                        "changed"
                     ],
                     "document": {
-                        "changed": false,
+                        "changed": true,
                         "meta": {
-                            "timestamp": 1669220256762
+                            "timestamp": 1669220256762,
+                            "newfile": true
                         },
                         "filter": true,
                         "title": "with_years_v2.mos",
@@ -306,7 +310,7 @@
                         "ace": {}
                     },
                     "editorType": "ace",
-                    "active": true
+                    "active": false
                 },
                 {
                     "type": "tab",
@@ -317,40 +321,21 @@
                     ],
                     "document": {
                         "changed": false,
-                        "meta": {
-                            "timestamp": 1669219192746
-                        },
                         "filter": true,
                         "title": "with_years.mos",
                         "tooltip": "/with_years.mos",
-                        "ace": {}
-                    },
-                    "editorType": "ace",
-                    "active": false
-                },
-                {
-                    "type": "tab",
-                    "name": "tab0",
-                    "path": "/data_1.dat",
-                    "className": [
-                        "tab0"
-                    ],
-                    "document": {
-                        "filter": true,
-                        "title": "data_1.dat",
-                        "tooltip": "/data_1.dat",
                         "ace": {
                             "folds": [],
                             "scrolltop": 0,
                             "scrollleft": 0,
                             "selection": {
                                 "start": {
-                                    "row": 6,
-                                    "column": 0
+                                    "row": 17,
+                                    "column": 27
                                 },
                                 "end": {
-                                    "row": 6,
-                                    "column": 0
+                                    "row": 17,
+                                    "column": 27
                                 },
                                 "isBackwards": false
                             },
@@ -359,63 +344,11 @@
                                 "useWrapMode": false,
                                 "wrapToView": true
                             },
-                            "firstLineState": {
-                                "row": 21,
-                                "state": "start",
-                                "mode": "ace/mode/text"
-                            }
+                            "firstLineState": 0
                         },
-                        "hash": "4b392df2d4e940c6f693e3468542a995fe575236",
                         "meta": {
-                            "timestamp": 1669029746477
-                        },
-                        "changed": false
-                    },
-                    "editorType": "ace",
-                    "active": false
-                },
-                {
-                    "type": "tab",
-                    "name": "tab7",
-                    "path": "/data_2.dat",
-                    "className": [
-                        "tab7"
-                    ],
-                    "document": {
-                        "filter": true,
-                        "title": "data_2.dat",
-                        "tooltip": "/data_2.dat",
-                        "ace": {
-                            "folds": [],
-                            "scrolltop": 0,
-                            "scrollleft": 0,
-                            "selection": {
-                                "start": {
-                                    "row": 27,
-                                    "column": 167
-                                },
-                                "end": {
-                                    "row": 27,
-                                    "column": 167
-                                },
-                                "isBackwards": false
-                            },
-                            "options": {
-                                "guessTabSize": true,
-                                "useWrapMode": false,
-                                "wrapToView": true
-                            },
-                            "firstLineState": {
-                                "row": 20,
-                                "state": "start",
-                                "mode": "ace/mode/text"
-                            }
-                        },
-                        "hash": "a27f6530dca33947c54f9b85a28efba39538b961",
-                        "meta": {
-                            "timestamp": 1669031493658
-                        },
-                        "changed": false
+                            "timestamp": 1669219192746
+                        }
                     },
                     "editorType": "ace",
                     "active": false
@@ -425,7 +358,8 @@
                     "name": "tab2",
                     "path": "/reduced",
                     "className": [
-                        "tab2"
+                        "tab2",
+                        "changed"
                     ],
                     "document": {
                         "filter": true,
@@ -452,16 +386,18 @@
                                 "wrapToView": true
                             },
                             "firstLineState": {
-                                "row": 119,
+                                "row": 115,
                                 "state": "start",
                                 "mode": "ace/mode/text"
-                            }
+                            },
+                            "cleansed": true
                         },
                         "hash": "e50accf6751661be1c2eb21d49f4c517d75c7ef8",
+                        "changed": true,
                         "meta": {
-                            "timestamp": 1669144738903
-                        },
-                        "changed": false
+                            "timestamp": 1669144738903,
+                            "newfile": true
+                        }
                     },
                     "editorType": "ace",
                     "active": false
@@ -536,6 +472,47 @@
                     },
                     "editorType": "ace",
                     "active": false
+                },
+                {
+                    "type": "tab",
+                    "name": "tab0",
+                    "path": "/last_version.mos",
+                    "className": [
+                        "tab0",
+                        "focus"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1669632138287
+                        },
+                        "filter": true,
+                        "title": "last_version.mos",
+                        "tooltip": "/last_version.mos",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": true
+                },
+                {
+                    "type": "tab",
+                    "name": "tab7",
+                    "path": "/dat3.dat",
+                    "className": [
+                        "tab7"
+                    ],
+                    "document": {
+                        "changed": false,
+                        "meta": {
+                            "timestamp": 1669631846684
+                        },
+                        "filter": true,
+                        "title": "dat3.dat",
+                        "tooltip": "/dat3.dat",
+                        "ace": {}
+                    },
+                    "editorType": "ace",
+                    "active": false
                 }
             ],
             "skin": "editor_tab",
@@ -544,9 +521,7 @@
         }
     },
     "tree_selection": {
-        "json()": [
-            "/data_1.dat"
-        ]
+        "json()": []
     },
     "welcome": {
         "@first": true
